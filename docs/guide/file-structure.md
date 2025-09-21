@@ -64,17 +64,15 @@ Includes all types of navigation points:
 - **DME** (Type 9)
 
 ### Airway Section (AWY)
-Defines airways and routes:
+Defines airways:
 - High altitude airways
 - Low altitude airways  
-- RNAV routes
-- Route segments with waypoint connections
+- RNAV airways
 
 ### SID Section (SID)
 Standard Instrument Departure procedures:
-- Departure routes from airports
-- Transition procedures
-- Runway-specific departures
+- Departure procedures
+- Runway transition procedures
 
 ### STAR Section (STR)
 Standard Terminal Arrival Route procedures:
@@ -101,7 +99,7 @@ Each record type can be identified by its prefix:
 | Prefix | Section | Description |
 |--------|---------|-------------|
 | `RWY` | Runway | Runway information |
-| `WPT` | Waypoint | Navigation points |
+| `WPT` | Waypoint | Waypoints (including airports and navigation facilities) |
 | `AWY` | Airway | Route segments |
 | `SID` | Departure | Standard departures |
 | `STR` | Arrival | Standard arrivals |

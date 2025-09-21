@@ -84,37 +84,6 @@ When processing navdata files, always verify:
 2. **Version Matching**: Ensure compatibility with your PFPX version
 3. **Provider Consistency**: Confirm expected data source
 
-## Programming Notes
-
-### Parsing Example (Python)
-
-```python
-def parse_header(file_path):
-    with open(file_path, 'r', encoding='utf-8') as f:
-        lines = [f.readline().strip() for _ in range(5)]
-    
-    return {
-        'database': lines[0],
-        'version': lines[1],
-        'effective_date': lines[2],
-        'expiration_date': lines[3],
-        'provider': lines[4]
-    }
-```
-
-### Date Handling
-
-```python
-from datetime import datetime
-
-def is_current(effective_date, expiration_date):
-    today = datetime.now().date()
-    effective = datetime.strptime(effective_date, '%Y/%m/%d').date()
-    expiration = datetime.strptime(expiration_date, '%Y/%m/%d').date()
-    
-    return effective <= today <= expiration
-```
-
 ## Common Issues
 
 ### Encoding Problems
@@ -131,15 +100,6 @@ def is_current(effective_date, expiration_date):
 - **Issue**: Truncated headers
 - **Cause**: File corruption or incomplete downloads
 - **Detection**: Check for exactly 5 header lines
-
-## Integration
-
-The header information is crucial for:
-
-- **Version Control**: Tracking database updates
-- **Validation**: Ensuring data currency
-- **Compatibility**: Matching with PFPX versions
-- **Logging**: Recording data sources and versions
 
 ## Next Steps
 

@@ -82,37 +82,6 @@ AIRAC 周期按顺序编号：
 2. **版本匹配**：确保与您的 PFPX 版本兼容
 3. **提供商一致性**：确认预期的数据源
 
-## 编程注意事项
-
-### 解析示例（Python）
-
-```python
-def parse_header(file_path):
-    with open(file_path, 'r', encoding='utf-8') as f:
-        lines = [f.readline().strip() for _ in range(5)]
-    
-    return {
-        'database': lines[0],
-        'version': lines[1],
-        'effective_date': lines[2],
-        'expiration_date': lines[3],
-        'provider': lines[4]
-    }
-```
-
-### 日期处理
-
-```python
-from datetime import datetime
-
-def is_current(effective_date, expiration_date):
-    today = datetime.now().date()
-    effective = datetime.strptime(effective_date, '%Y/%m/%d').date()
-    expiration = datetime.strptime(expiration_date, '%Y/%m/%d').date()
-    
-    return effective <= today <= expiration
-```
-
 ## 常见问题
 
 ### 编码问题
@@ -129,15 +98,6 @@ def is_current(effective_date, expiration_date):
 - **问题**：头部截断
 - **原因**：文件损坏或下载不完整
 - **检测**：检查确切的 5 个头部行
-
-## 集成
-
-头部信息对以下方面至关重要：
-
-- **版本控制**：跟踪数据库更新
-- **验证**：确保数据时效性
-- **兼容性**：与 PFPX 版本匹配
-- **日志记录**：记录数据源和版本
 
 ## 下一步
 
