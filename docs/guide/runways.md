@@ -7,7 +7,7 @@ The runway section contains detailed information about airport runways worldwide
 Each runway record follows this pattern:
 
 ```
-RWY ICAO## LLLLWWWHHHASP±LLLLLLLLL±LLLLLLLLL
+RWY ICAO##   LLLLLWWWHHHASP±LLLLLLLLL±LLLLLLLLLL
 ```
 
 ## Example Record

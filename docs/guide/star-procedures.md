@@ -5,7 +5,7 @@ Standard Terminal Arrival Route (STAR) procedures provide structured routing fro
 ## Format Structure
 
 ```
-STR ICAORRR  DDDDDDWWWWWWNNNNNPPPPPPTTTTTTT ±LLLLLLLLL±LLLLLLLLLS
+STR ICAORRR  DDDDDDWWWWWWNNNNNPPPPPPTTTTTTT ±LLLLLLLLL±LLLLLLLLLR
 ```
 
 ## Example Records

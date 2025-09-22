@@ -5,7 +5,7 @@ Standard Instrument Departure (SID) procedures provide standardized routing from
 ## Format Structure
 
 ```
-SID ICAORRR  DDDDDDWWWWWWNNNNNPPPPPPTTTTTTT ±LLLLLLLLL±LLLLLLLLLS
+SID ICAORRR  DDDDDDWWWWWWNNNNNPPPPPPTTTTTTT ±LLLLLLLLL±LLLLLLLLLR
 ```
 
 ## Example Records

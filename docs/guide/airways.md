@@ -7,7 +7,7 @@ Airways define the route structure connecting waypoints for aircraft navigation.
 ## Format Structure
 
 ```
-AWY ROUTEAA#SSSSSSEEEEEEDDDDD±LLLLLLLLL±LLLLLLLLL±LLLLLLLLL±LLLLLLLLLMMMMMMMMMMMMR
+AWY ROUTE  AA#SSSSSSEEEEEED±LLLLLLLLL±LLLLLLLLLL±LLLLLLLLL±LLLLLLLLLLAAAAAUUUUUR
 ```
 
 ## Example Record
