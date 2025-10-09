@@ -2,6 +2,11 @@ import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: 'PFPX Navdata Documentation',
+  head: [
+    ['link', { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' }],
+    ['link', { rel: 'icon', type: 'image/png', href: '/favicon.png' }], // Fallback for browsers that don't support SVG
+    ['link', { rel: 'apple-touch-icon', href: '/favicon.png' }]
+  ],
   description: 'Complete guide to PFPX navigation data file format',
   
   // Default language (fallback)
