@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Build outputs
+dist/
+build/
+.vitepress/dist/
+.vitepress/cache/
+
+# Logs
+*.log
+
+# Package manager files
+package-lock.json
+pnpm-lock.yaml
+yarn.lock
+

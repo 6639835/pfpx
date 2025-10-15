@@ -2,9 +2,9 @@
 layout: home
 
 hero:
-  name: "PFPX Navdata"
-  text: "Complete Guide to Navigation Data Format"
-  tagline: "Decode, analyze, and work with PFPX navigation database files"
+  name: 'PFPX Navdata'
+  text: 'Complete Guide to Navigation Data Format'
+  tagline: 'Decode, analyze, and work with PFPX navigation database files'
   actions:
     - theme: brand
       text: Get Started
@@ -40,12 +40,12 @@ Our documentation provides complete analysis and tools for working with these fi
 ✅ **Automate processing** - Python tools for fast encoding/decoding  
 ✅ **Extract data** - Access runway, waypoint, and airway information  
 ✅ **Integrate systems** - Connect PFPX data with other aviation tools  
-✅ **Research & analyze** - Study navigation database content and structure  
+✅ **Research & analyze** - Study navigation database content and structure
 
 ## Quick Start
 
 1. **[Learn the basics](./guide/getting-started.md)** - Understanding navdata files
-2. **[Set up tools](./tools/python-decoder.md)** - Install the Python decoder  
+2. **[Set up tools](./tools/python-decoder.md)** - Install the Python decoder
 3. **[Try examples](./tools/examples.md)** - Practical usage scenarios
 
 ---
@@ -53,4 +53,3 @@ Our documentation provides complete analysis and tools for working with these fi
 ::: warning Community Research
 This documentation is based on reverse engineering and community analysis. Neither Aerosoft nor Navigraph have published official specifications for the PFPX data format.
 :::
-

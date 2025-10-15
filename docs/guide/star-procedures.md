@@ -19,30 +19,32 @@ STR YWLM30   319981258062DOMBLIVTA1R      -33143681+1515064721
 
 ## Field Breakdown
 
-| Field | Meaning | Notes / Examples |
-|-------|---------|------------------|
-| `STR` | Arrival procedure identifier | Fixed value indicating this record is a STAR |
-| `YWLM` | ICAO code |  |
-| `ALL` | Runway designation | ALL = All runways; xxB = xxL / xxC / xxR |
-| `319972` | STAR procedure database ID |  |
-| `094283` | Waypoint ID (current line) |  |
-| `EKIPU` | Waypoint name (current line) |  |
-| `IVTA1R` | Procedure identifier |  |
-| `EKIPU` | Procedure transition point | If transition point exists, its name is filled in |
-| `-33207250` | Latitude (current waypoint) |  |
-| `+151740667` | Longitude (current waypoint) |  |
-| `1` | RNAV procedure flag | 0 = No, 1 = Yes |
+| Field        | Meaning                      | Notes / Examples                                  |
+| ------------ | ---------------------------- | ------------------------------------------------- |
+| `STR`        | Arrival procedure identifier | Fixed value indicating this record is a STAR      |
+| `YWLM`       | ICAO code                    |                                                   |
+| `ALL`        | Runway designation           | ALL = All runways; xxB = xxL / xxC / xxR          |
+| `319972`     | STAR procedure database ID   |                                                   |
+| `094283`     | Waypoint ID (current line)   |                                                   |
+| `EKIPU`      | Waypoint name (current line) |                                                   |
+| `IVTA1R`     | Procedure identifier         |                                                   |
+| `EKIPU`      | Procedure transition point   | If transition point exists, its name is filled in |
+| `-33207250`  | Latitude (current waypoint)  |                                                   |
+| `+151740667` | Longitude (current waypoint) |                                                   |
+| `1`          | RNAV procedure flag          | 0 = No, 1 = Yes                                   |
 
 ## Runway Designations
 
 ### Standard Format
+
 - **Specific Runway**: `30`, `36`, `27L` - Applies to single runway
-- **All Runways**: `ALL` - Applies to all runways  
+- **All Runways**: `ALL` - Applies to all runways
 - **Grouped Runways**: `36B` - Applies to 36L/36C/36R
 
 ## Special Cases
 
 ### Route Segment Starting Point Definition
+
 Each STR procedure must define the route segment starting point in the first line
 
 Example:
@@ -58,6 +60,7 @@ STR ZGSZ16   322170259574CEN45BEK1XA      +22691161+1140501530
 > `BEKOL` indicates the starting point of this arrival procedure
 
 ### Different Runway Segments
+
 If the same arrival procedure corresponds to multiple runways, all segments need to be listed separately according to runway designation
 
 Example:

@@ -9,6 +9,7 @@ PFPX navdata files use XOR encryption with a custom character mapping. The decod
 ## Manual Decoding Method
 
 ### Requirements
+
 - **Notepad++** with Converter plugin
 - PFPX navdata file (`.nav`)
 - Time and patience (for large files)
@@ -16,9 +17,11 @@ PFPX navdata files use XOR encryption with a custom character mapping. The decod
 ### Step-by-Step Process
 
 1. **Open the file in Notepad**
+
    ```
    File → Open → navdata.nav
    ```
+
    You'll see the plaintext header followed by encoded content.
 
 2. **Switch to Notepad++**
@@ -31,6 +34,7 @@ PFPX navdata files use XOR encryption with a custom character mapping. The decod
    - **Important**: Don't select more than 3,000-4,000 lines at once
 
 4. **Convert to hexadecimal**
+
    ```
    Menu → Plugins → Converter → ASCII-to-HEX
    ```
@@ -42,11 +46,12 @@ PFPX navdata files use XOR encryption with a custom character mapping. The decod
 ### Important Notes
 
 ::: warning File Handling
+
 - **Never modify the original file directly**
 - **Always work on a copy**
 - **Use ANSI encoding** when saving new files
 - **Process in small chunks** to avoid errors
-:::
+  :::
 
 ## Automated Decoding Method
 
@@ -58,7 +63,7 @@ Our Python decoder automates this entire process:
 # Decode a navdata file
 python nav_decoder.py decode navdata.nav output.txt
 
-# Encode a text file back to navdata format  
+# Encode a text file back to navdata format
 python nav_decoder.py encode input.txt navdata.nav
 ```
 
@@ -70,6 +75,7 @@ python nav_decoder.py auto
 ```
 
 This looks for:
+
 - `wait2decode.nav` → creates `already_decode.txt`
 - `wait2encode.txt` → creates `already_encode.nav`
 
@@ -93,14 +99,14 @@ RWY ZYYJ27   08530148272ASP+42884531+129467125
 WPT ENOE QAT0ENOEA1P 1CA1TROLL AIRFIELD                003733     -71956667+002453333+0412509843ENOR    18000
 WPT NZFX    0NZFXA1P 1PA1PHOENIX                       011402     -77957092+166745389+0003710006NZZO    18000
 ......
-WPT ZYTX SHE0ZYTXZYP 1CZYTAOXIAN                       016367     +41641667+123485000+0019810499ZYSH    
+WPT ZYTX SHE0ZYTXZYP 1CZYTAOXIAN                       016367     +41641667+123485000+0019810499ZYSH
 WPT ZYYJ YNJ0ZYYJZYP 1CZYCHAOYANGCHUAN                 016368     +42881667+129450000+0062208530ZYSH    9490
 
-WPT AARON   6AARONA1E0 A1AARON                         016368     -79384500-110927167+0000000000NZZO         
-WPT ANGIE   6ANGIEA1E0 A1ANGIE                         016369     -89754667-176959167+0000000000NZZO       
+WPT AARON   6AARONA1E0 A1AARON                         016368     -79384500-110927167+0000000000NZZO
+WPT ANGIE   6ANGIEA1E0 A1ANGIE                         016369     -89754667-176959167+0000000000NZZO
 ......
-WPT LJ      5LJZYP   0 ZYSANJIAZI QIQIHAR              27493901770+47195903+123944392+0000000000ZYSH         
-WPT JA      5JAZYP   0 ZYDEXIN YANJI                   27494003320+42871356+129341022+0000000000ZYSH            
+WPT LJ      5LJZYP   0 ZYSANJIAZI QIQIHAR              27493901770+47195903+123944392+0000000000ZYSH
+WPT JA      5JAZYP   0 ZYDEXIN YANJI                   27494003320+42871356+129341022+0000000000ZYSH
 
 AWY A1    SA32690940745071+33447742+135794494+33364503+13544151408000UNLTD0
 AWY A1    SA30745070749101+33364503+135441514+33248769+13499722208000UNLTD0
@@ -134,12 +140,12 @@ After decoding, verify your results:
 
 ### Common Issues
 
-| Problem | Cause | Solution |
-|---------|-------|----------|
-| Converter plugin missing | Notepad++ installation | Install Converter plugin |
-| "Error" message | Processing too many lines | Reduce selection size |
-| Garbled output | Wrong encoding | Use ANSI encoding |
-| Missing characters | Incomplete selection | Include full line ranges |
+| Problem                  | Cause                     | Solution                 |
+| ------------------------ | ------------------------- | ------------------------ |
+| Converter plugin missing | Notepad++ installation    | Install Converter plugin |
+| "Error" message          | Processing too many lines | Reduce selection size    |
+| Garbled output           | Wrong encoding            | Use ANSI encoding        |
+| Missing characters       | Incomplete selection      | Include full line ranges |
 
 ### Performance Tips
 
@@ -151,6 +157,7 @@ After decoding, verify your results:
 ## Integration Options
 
 ### Scripting
+
 ```python
 from nav_codec import NavCodec
 
@@ -159,6 +166,7 @@ codec.decode_file("navdata.nav", "output.txt")
 ```
 
 ### Batch Processing
+
 ```bash
 # Process multiple files
 for file in *.nav; do

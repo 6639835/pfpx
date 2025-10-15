@@ -19,17 +19,21 @@ NAVIGRAPH
 ## Field Descriptions
 
 ### Line 1: Database Identifier
+
 ```
 PFPX NAVDATA
 ```
+
 - **Purpose**: Identifies the file as PFPX navigation data
 - **Format**: Fixed string
 - **Required**: Yes
 
 ### Line 2: Database Version
+
 ```
 NG2509
 ```
+
 - **Purpose**: Database version/cycle identifier
 - **Format**: Provider prefix + cycle number
 - **Examples**:
@@ -37,25 +41,31 @@ NG2509
   - `AS2509` = Aerosoft cycle 2509
 
 ### Line 3: Effective Date
+
 ```
 2025/09/04
 ```
+
 - **Purpose**: When the navigation data becomes valid
 - **Format**: `YYYY/MM/DD`
 - **Standard**: Follows AIRAC cycle dates
 
 ### Line 4: Expiration Date
+
 ```
 2025/10/01
 ```
+
 - **Purpose**: When the navigation data expires
 - **Format**: `YYYY/MM/DD`
 - **Standard**: Follows AIRAC cycle dates (28-day intervals)
 
 ### Line 5: Data Provider
+
 ```
 NAVIGRAPH
 ```
+
 - **Purpose**: Identifies the navigation data source
 - **Common Values**:
   - `NAVIGRAPH` - Navigraph navigation data
@@ -73,6 +83,7 @@ Navigation data follows the AIRAC (Aeronautical Information Regulation and Contr
 ### Cycle Numbering
 
 AIRAC cycles are numbered sequentially:
+
 - **Format**: YYWW (Year + Week number)
 - **Example**: `2509` = 2025, cycle 9
 
@@ -87,16 +98,19 @@ When processing navdata files, always verify:
 ## Common Issues
 
 ### Encoding Problems
+
 - **Symptom**: Garbled header text
 - **Cause**: Wrong text encoding
 - **Solution**: Use UTF-8 or ANSI encoding
 
 ### Date Format Variations
+
 - **Standard**: `YYYY/MM/DD`
 - **Alternatives**: Some files may use different separators
 - **Handling**: Implement flexible date parsing
 
 ### Missing Lines
+
 - **Issue**: Truncated headers
 - **Cause**: File corruption or incomplete downloads
 - **Detection**: Check for exactly 5 header lines

@@ -22,6 +22,7 @@ As of now, neither Aerosoft nor Navigraph have published official specifications
 ### Data Sources
 
 The navigation data typically comes from providers such as:
+
 - **Navigraph** - Most common provider
 - **Aerosoft** - Alternative data source
 
@@ -45,21 +46,27 @@ The navigation data typically comes from providers such as:
 This documentation is organized into several sections:
 
 ### Data Format
+
 Learn about the technical aspects of the file format, encoding methods, and structure.
 
 ### Data Sections
+
 Detailed breakdown of each data type within the files:
+
 - Runways and airport information
 - Navigation aids and waypoints
 - Airways and route structure
 - Departure and arrival procedures
 
 ### Additional Explanation
+
 Specialized data for airspace management:
+
 - FIR sectors and altitude constraints
 - Heading ranges and restrictions
 
 ### Tools
+
 Practical tools and utilities for working with PFPX navdata files.
 
 ## Contributing

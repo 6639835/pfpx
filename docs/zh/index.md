@@ -2,9 +2,9 @@
 layout: home
 
 hero:
-  name: "PFPX 导航数据"
-  text: "导航数据格式完整指南"
-  tagline: "解码、分析和处理 PFPX 导航数据库文件"
+  name: 'PFPX 导航数据'
+  text: '导航数据格式完整指南'
+  tagline: '解码、分析和处理 PFPX 导航数据库文件'
   actions:
     - theme: brand
       text: 开始使用
@@ -40,12 +40,12 @@ PFPX（Professional Flight Planner X）使用专有二进制格式的专业导�
 ✅ **自动化处理** - 用于快速编码/解码的 Python 工具  
 ✅ **提取数据** - 访问跑道、航路点和航路信息  
 ✅ **集成系统** - 将 PFPX 数据与其他航空工具连接  
-✅ **研究分析** - 研究导航数据库内容和结构  
+✅ **研究分析** - 研究导航数据库内容和结构
 
 ## 快速开始
 
 1. **[学习基础知识](./guide/getting-started.md)** - 了解导航数据文件
-2. **[设置工具](./tools/python-decoder.md)** - 安装 Python 解码器  
+2. **[设置工具](./tools/python-decoder.md)** - 安装 Python 解码器
 3. **[尝试示例](./tools/examples.md)** - 实际使用场景
 
 ---

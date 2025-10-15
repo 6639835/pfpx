@@ -9,6 +9,7 @@ PFPX 导航数据文件使用带有自定义字符映射的 XOR 加密。解码�
 ## 手动解码方法
 
 ### 要求
+
 - **Notepad++** 及其转换器插件
 - PFPX 导航数据文件（`.nav`）
 - 时间和耐心（处理大文件）
@@ -16,9 +17,11 @@ PFPX 导航数据文件使用带有自定义字符映射的 XOR 加密。解码�
 ### 分步过程
 
 1. **在 Notepad 中打开文件**
+
    ```
    文件 → 打开 → navdata.nav
    ```
+
    您将看到明文头部，然后是编码内容。
 
 2. **切换到 Notepad++**
@@ -31,6 +34,7 @@ PFPX 导航数据文件使用带有自定义字符映射的 XOR 加密。解码�
    - **重要**：一次不要选择超过 3,000-4,000 行
 
 4. **转换为十六进制**
+
    ```
    菜单 → 插件 → 转换器 → ASCII 转十六进制
    ```
@@ -42,11 +46,12 @@ PFPX 导航数据文件使用带有自定义字符映射的 XOR 加密。解码�
 ### 重要注意事项
 
 ::: warning 文件处理
+
 - **绝不直接修改原始文件**
 - **始终在副本上工作**
 - **保存新文件时使用 ANSI 编码**
 - **分小块处理**以避免错误
-:::
+  :::
 
 ## 自动化解码方法
 
@@ -58,7 +63,7 @@ PFPX 导航数据文件使用带有自定义字符映射的 XOR 加密。解码�
 # 解码导航数据文件
 python nav_decoder.py decode navdata.nav output.txt
 
-# 将文本文件编码回导航数据格式  
+# 将文本文件编码回导航数据格式
 python nav_decoder.py encode input.txt navdata.nav
 ```
 
@@ -70,6 +75,7 @@ python nav_decoder.py auto
 ```
 
 这会查找：
+
 - `wait2decode.nav` → 创建 `already_decode.txt`
 - `wait2encode.txt` → 创建 `already_encode.nav`
 
@@ -93,14 +99,14 @@ RWY ZYYJ27   08530148272ASP+42884531+129467125
 WPT ENOE QAT0ENOEA1P 1CA1TROLL AIRFIELD                003733     -71956667+002453333+0412509843ENOR    18000
 WPT NZFX    0NZFXA1P 1PA1PHOENIX                       011402     -77957092+166745389+0003710006NZZO    18000
 ......
-WPT ZYTX SHE0ZYTXZYP 1CZYTAOXIAN                       016367     +41641667+123485000+0019810499ZYSH    
+WPT ZYTX SHE0ZYTXZYP 1CZYTAOXIAN                       016367     +41641667+123485000+0019810499ZYSH
 WPT ZYYJ YNJ0ZYYJZYP 1CZYCHAOYANGCHUAN                 016368     +42881667+129450000+0062208530ZYSH    9490
 
-WPT AARON   6AARONA1E0 A1AARON                         016368     -79384500-110927167+0000000000NZZO         
-WPT ANGIE   6ANGIEA1E0 A1ANGIE                         016369     -89754667-176959167+0000000000NZZO       
+WPT AARON   6AARONA1E0 A1AARON                         016368     -79384500-110927167+0000000000NZZO
+WPT ANGIE   6ANGIEA1E0 A1ANGIE                         016369     -89754667-176959167+0000000000NZZO
 ......
-WPT LJ      5LJZYP   0 ZYSANJIAZI QIQIHAR              27493901770+47195903+123944392+0000000000ZYSH         
-WPT JA      5JAZYP   0 ZYDEXIN YANJI                   27494003320+42871356+129341022+0000000000ZYSH            
+WPT LJ      5LJZYP   0 ZYSANJIAZI QIQIHAR              27493901770+47195903+123944392+0000000000ZYSH
+WPT JA      5JAZYP   0 ZYDEXIN YANJI                   27494003320+42871356+129341022+0000000000ZYSH
 
 AWY A1    SA32690940745071+33447742+135794494+33364503+13544151408000UNLTD0
 AWY A1    SA30745070749101+33364503+135441514+33248769+13499722208000UNLTD0
@@ -134,12 +140,12 @@ STR ZYYJ27   330410263468YJ604WQG19A      +43017778+1296950001
 
 ### 常见问题
 
-| 问题 | 原因 | 解决方案 |
-|---------|-------|----------|
+| 问题           | 原因               | 解决方案       |
+| -------------- | ------------------ | -------------- |
 | 转换器插件缺失 | Notepad++ 安装问题 | 安装转换器插件 |
-| "错误"消息 | 处理行数过多 | 减少选择大小 |
-| 输出乱码 | 编码错误 | 使用 ANSI 编码 |
-| 字符缺失 | 选择不完整 | 包含完整行范围 |
+| "错误"消息     | 处理行数过多       | 减少选择大小   |
+| 输出乱码       | 编码错误           | 使用 ANSI 编码 |
+| 字符缺失       | 选择不完整         | 包含完整行范围 |
 
 ### 性能提示
 
@@ -151,6 +157,7 @@ STR ZYYJ27   330410263468YJ604WQG19A      +43017778+1296950001
 ## 集成选项
 
 ### 脚本化
+
 ```python
 from nav_codec import NavCodec
 
@@ -159,6 +166,7 @@ codec.decode_file("navdata.nav", "output.txt")
 ```
 
 ### 批量处理
+
 ```bash
 # 处理多个文件
 for file in *.nav; do

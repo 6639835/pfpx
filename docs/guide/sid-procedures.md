@@ -25,28 +25,30 @@ SID RJNAALL  102001075867WAKITTALMI4WAKIT +35032736+1349255530
 
 ## Field Breakdown
 
-| Field | Meaning | Notes / Examples |
-|-------|---------|------------------|
-| `SID` | Departure procedure identifier | Fixed value indicating this record is a SID |
-| `RJNA` | ICAO code |  |
-| `ALL` | Runway designation | ALL = All runways; xxB = xxL / xxC / xxR |
-| `101992` | SID database ID |  |
-| `213869` | Waypoint ID (current line) |  |
-| `TALMI` | Waypoint name (current line) |  |
-| `TALMI4` | Procedure identifier |  |
-| `KAMMY` | Procedure transition point | If transition point exists, its name is filled in |
-| `+40073450` | Latitude (current waypoint) |  |
-| `+116574192` | Longitude (current waypoint) |  |
-| `0` | RNAV procedure flag | 0 = No, 1 = Yes |
+| Field        | Meaning                        | Notes / Examples                                  |
+| ------------ | ------------------------------ | ------------------------------------------------- |
+| `SID`        | Departure procedure identifier | Fixed value indicating this record is a SID       |
+| `RJNA`       | ICAO code                      |                                                   |
+| `ALL`        | Runway designation             | ALL = All runways; xxB = xxL / xxC / xxR          |
+| `101992`     | SID database ID                |                                                   |
+| `213869`     | Waypoint ID (current line)     |                                                   |
+| `TALMI`      | Waypoint name (current line)   |                                                   |
+| `TALMI4`     | Procedure identifier           |                                                   |
+| `KAMMY`      | Procedure transition point     | If transition point exists, its name is filled in |
+| `+40073450`  | Latitude (current waypoint)    |                                                   |
+| `+116574192` | Longitude (current waypoint)   |                                                   |
+| `0`          | RNAV procedure flag            | 0 = No, 1 = Yes                                   |
 
 ## Runway Designations
 
 ### Standard Format
+
 - **Specific Runway**: `01`, `36`, `27L` - Applies to single runway
 - **Multiple Runways**: `ALL` - Applies to all runways
 - **Grouped Runways**: `36B` - Applies to 36L/36C/36R
 
 ### Examples
+
 ```
 SID ZBAA01   ... → Runway 01 specific
 SID ZBAAALL  ... → All runways
@@ -64,6 +66,7 @@ SID procedures connect to other navdata sections:
 ## Special Considerations
 
 ### Common Segments
+
 SID common segments
 
 ```

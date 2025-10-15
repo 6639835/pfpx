@@ -41,21 +41,27 @@ A typical navdata file is organized as follows:
 ## Section Details
 
 ### File Header (Plaintext)
+
 The header contains metadata about the navigation database:
+
 - Database name and version
 - Effective dates (AIRAC cycle)
 - Data provider information
 
 ### Runway Section (RWY)
+
 Contains runway information for airports worldwide:
+
 - Runway dimensions and orientation
 - Surface type and condition
 - Geographic coordinates
 
 ### Waypoint Section (WPT)
+
 Includes all types of navigation points:
+
 - **Airports** (Type 0)
-- **VFR Waypoints** (Type 1)  
+- **VFR Waypoints** (Type 1)
 - **VOR/TACAN** (Type 2)
 - **TACAN** (Type 3)
 - **VOR/DME** (Type 4)
@@ -64,18 +70,24 @@ Includes all types of navigation points:
 - **DME** (Type 9)
 
 ### Airway Section (AWY)
+
 Defines airways:
+
 - High altitude airways
-- Low altitude airways  
+- Low altitude airways
 - RNAV airways
 
 ### SID Section (SID)
+
 Standard Instrument Departure procedures:
+
 - Departure procedures
 - Runway transition procedures
 
 ### STAR Section (STR)
+
 Standard Terminal Arrival Route procedures:
+
 - Arrival routes to airports
 - Approach transitions
 - Runway-specific arrivals
@@ -83,11 +95,14 @@ Standard Terminal Arrival Route procedures:
 ## Data Encoding
 
 ### Header vs Content
+
 - **Header**: Stored in plaintext ASCII
 - **Content**: Encoded using XOR encryption with key `0x85`
 
 ### Line-by-Line Format
+
 Each encoded section follows a line-by-line format where:
+
 - Each line represents one data record
 - Lines are separated by standard newline characters
 - Record format varies by section type
@@ -96,17 +111,18 @@ Each encoded section follows a line-by-line format where:
 
 Each record type can be identified by its prefix:
 
-| Prefix | Section | Description |
-|--------|---------|-------------|
-| `RWY` | Runway | Runway information |
-| `WPT` | Waypoint | Waypoints (including airports and navigation facilities) |
-| `AWY` | Airway | Route segments |
-| `SID` | Departure | Standard departures |
-| `STR` | Arrival | Standard arrivals |
+| Prefix | Section   | Description                                              |
+| ------ | --------- | -------------------------------------------------------- |
+| `RWY`  | Runway    | Runway information                                       |
+| `WPT`  | Waypoint  | Waypoints (including airports and navigation facilities) |
+| `AWY`  | Airway    | Route segments                                           |
+| `SID`  | Departure | Standard departures                                      |
+| `STR`  | Arrival   | Standard arrivals                                        |
 
 ## File Size Considerations
 
 Navdata files can be quite large:
+
 - **Typical size**: 50-200 MB
 - **Record count**: Hundreds of thousands of records
 - **Global coverage**: Worldwide navigation data
@@ -115,10 +131,11 @@ Navdata files can be quite large:
 
 ::: tip Batch Processing
 Due to file size, consider processing in chunks:
+
 - Process 3,000-4,000 lines at a time when using manual tools
 - Use streaming for automated processing
 - Implement progress tracking for large operations
-:::
+  :::
 
 ## Next Steps
 

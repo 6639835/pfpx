@@ -16,6 +16,7 @@ head -20 decoded_output.txt
 ```
 
 Expected output:
+
 ```
 PFPX NAVDATA
 NG2509
@@ -55,26 +56,26 @@ from pathlib import Path
 
 def extract_runways(navdata_file, output_file):
     """Extract all runway records to a separate file."""
-    
+
     # Decode the navdata file
     codec = NavCodec()
     decoded_file = "temp_decoded.txt"
     codec.decode_file(Path(navdata_file), Path(decoded_file))
-    
+
     # Extract runway records
     runways = []
     with open(decoded_file, 'r') as f:
         for line in f:
             if line.startswith('RWY'):
                 runways.append(line.strip())
-    
+
     # Write runway data
     with open(output_file, 'w') as f:
         f.write(f"Found {len(runways)} runways\n")
         f.write("=" * 50 + "\n")
         for runway in runways:
             f.write(runway + "\n")
-    
+
     print(f"Extracted {len(runways)} runways to {output_file}")
 
 # Usage
@@ -93,15 +94,15 @@ import re
 
 def analyze_airports(navdata_file):
     """Analyze airport data and runway counts."""
-    
+
     # Decode file
     codec = NavCodec()
     decoded_file = "temp_decoded.txt"
     codec.decode_file(navdata_file, decoded_file)
-    
+
     # Count runways per airport
     airport_runways = defaultdict(list)
-    
+
     with open(decoded_file, 'r') as f:
         for line in f:
             if line.startswith('RWY'):
@@ -112,11 +113,11 @@ def analyze_airports(navdata_file):
                     icao = icao_runway[:4]  # "ZBAA"
                     runway = icao_runway[4:] # "01"
                     airport_runways[icao].append(runway)
-    
+
     # Display results
     print(f"Airport Analysis ({len(airport_runways)} airports)")
     print("=" * 50)
-    
+
     for icao in sorted(airport_runways.keys())[:10]:  # Top 10
         runways = airport_runways[icao]
         print(f"{icao}: {len(runways)} runways - {', '.join(runways)}")
@@ -139,28 +140,28 @@ import sys
 
 def batch_decode(input_dir, output_dir):
     """Decode all .nav files in a directory."""
-    
+
     input_path = Path(input_dir)
     output_path = Path(output_dir)
-    
+
     # Create output directory
     output_path.mkdir(exist_ok=True)
-    
+
     # Find all .nav files
     nav_files = list(input_path.glob("*.nav"))
     if not nav_files:
         print(f"No .nav files found in {input_dir}")
         return
-    
+
     print(f"Found {len(nav_files)} files to process")
-    
+
     codec = NavCodec()
     successful = 0
     failed = 0
-    
+
     for nav_file in nav_files:
         output_file = output_path / f"{nav_file.stem}_decoded.txt"
-        
+
         try:
             codec.decode_file(nav_file, output_file)
             print(f"✓ {nav_file.name}")
@@ -168,14 +169,14 @@ def batch_decode(input_dir, output_dir):
         except Exception as e:
             print(f"✗ {nav_file.name}: {e}")
             failed += 1
-    
+
     print(f"\nResults: {successful} successful, {failed} failed")
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
         print("Usage: python batch_decode.py <input_dir> <output_dir>")
         sys.exit(1)
-    
+
     batch_decode(sys.argv[1], sys.argv[2])
 ```
 
@@ -196,10 +197,10 @@ for file in "$INPUT_DIR"/*.nav; do
     if [ -f "$file" ]; then
         filename=$(basename "$file" .nav)
         output="$OUTPUT_DIR/${filename}_decoded.txt"
-        
+
         echo "Processing: $filename"
         python nav_decoder.py decode "$file" "$output"
-        
+
         if [ $? -eq 0 ]; then
             echo "✓ Success: $filename"
         else
@@ -231,34 +232,34 @@ codec = NavCodec()
 @app.route('/api/decode', methods=['POST'])
 def decode_api():
     """API endpoint to decode navdata files."""
-    
+
     if 'file' not in request.files:
         return jsonify({'error': 'No file provided'}), 400
-    
+
     file = request.files['file']
     if file.filename == '':
         return jsonify({'error': 'No file selected'}), 400
-    
+
     # Create temporary files
     with tempfile.NamedTemporaryFile(suffix='.nav', delete=False) as input_temp:
         with tempfile.NamedTemporaryFile(suffix='.txt', delete=False) as output_temp:
             try:
                 # Save uploaded file
                 file.save(input_temp.name)
-                
+
                 # Decode
                 codec.decode_file(Path(input_temp.name), Path(output_temp.name))
-                
+
                 # Return decoded file
                 return send_file(
                     output_temp.name,
                     as_attachment=True,
                     download_name='decoded_navdata.txt'
                 )
-                
+
             except Exception as e:
                 return jsonify({'error': str(e)}), 500
-            
+
             finally:
                 # Clean up
                 try:
@@ -270,12 +271,12 @@ def decode_api():
 @app.route('/api/info', methods=['POST'])
 def info_api():
     """Extract basic info from navdata file."""
-    
+
     if 'file' not in request.files:
         return jsonify({'error': 'No file provided'}), 400
-    
+
     file = request.files['file']
-    
+
     # Read first few lines for header info
     file.seek(0)
     lines = []
@@ -283,7 +284,7 @@ def info_api():
         line = file.readline().decode('utf-8', errors='ignore').strip()
         if line:
             lines.append(line)
-    
+
     if len(lines) >= 5:
         return jsonify({
             'database': lines[0],
@@ -312,22 +313,22 @@ from pathlib import Path
 
 class NavDataAnalyzer:
     """Analyze PFPX navdata using pandas."""
-    
+
     def __init__(self):
         self.codec = NavCodec()
-    
+
     def decode_and_parse(self, navdata_file):
         """Decode file and parse into structured data."""
-        
+
         # Decode
         decoded_file = "temp_decoded.txt"
         self.codec.decode_file(Path(navdata_file), Path(decoded_file))
-        
+
         # Parse different record types
         runways = []
         waypoints = []
         airways = []
-        
+
         with open(decoded_file, 'r') as f:
             for line in f:
                 line = line.strip()
@@ -337,19 +338,19 @@ class NavDataAnalyzer:
                     waypoints.append(self.parse_waypoint(line))
                 elif line.startswith('AWY'):
                     airways.append(self.parse_airway(line))
-        
+
         return {
             'runways': pd.DataFrame(runways),
             'waypoints': pd.DataFrame(waypoints),
             'airways': pd.DataFrame(airways)
         }
-    
+
     def parse_runway(self, line):
         """Parse runway record."""
         # RWY ZBAA01   12467197359ASP+40058914+116617658
         pattern = r'RWY (\w{4})(\d{2})\s+(\d+)(\d{3})(\d{3})ASP([+-]\d{8})([+-]\d{9})'
         match = re.match(pattern, line)
-        
+
         if match:
             return {
                 'icao': match.group(1),
@@ -361,7 +362,7 @@ class NavDataAnalyzer:
                 'longitude': int(match.group(7)) / 1_000_000
             }
         return {}
-    
+
     def parse_waypoint(self, line):
         """Parse waypoint record (simplified)."""
         parts = line.split()
@@ -372,7 +373,7 @@ class NavDataAnalyzer:
                 'raw_line': line
             }
         return {}
-    
+
     def parse_airway(self, line):
         """Parse airway record (simplified)."""
         parts = line.split()
@@ -387,13 +388,13 @@ class NavDataAnalyzer:
 def main():
     analyzer = NavDataAnalyzer()
     data = analyzer.decode_and_parse("navdata.nav")
-    
+
     # Analyze runways
     runways_df = data['runways']
     print(f"Total runways: {len(runways_df)}")
     print(f"Average runway length: {runways_df['length_ft'].mean():.0f} ft")
     print(f"Longest runway: {runways_df['length_ft'].max()} ft")
-    
+
     # Top airports by runway count
     runway_counts = runways_df.groupby('icao').size().sort_values(ascending=False)
     print("\nTop 10 airports by runway count:")
@@ -418,51 +419,51 @@ import logging
 
 class NavdataMonitor:
     """Monitor directory for new navdata files."""
-    
+
     def __init__(self, watch_dir, output_dir, check_interval=60):
         self.watch_dir = Path(watch_dir)
         self.output_dir = Path(output_dir)
         self.check_interval = check_interval
         self.codec = NavCodec()
         self.processed_files = set()
-        
+
         # Setup logging
         logging.basicConfig(
             level=logging.INFO,
             format='%(asctime)s - %(levelname)s - %(message)s'
         )
         self.logger = logging.getLogger(__name__)
-    
+
     def process_new_files(self):
         """Check for and process new .nav files."""
         nav_files = set(self.watch_dir.glob("*.nav"))
         new_files = nav_files - self.processed_files
-        
+
         for nav_file in new_files:
             output_file = self.output_dir / f"{nav_file.stem}_decoded.txt"
-            
+
             try:
                 self.logger.info(f"Processing: {nav_file.name}")
                 self.codec.decode_file(nav_file, output_file)
                 self.logger.info(f"Completed: {nav_file.name}")
                 self.processed_files.add(nav_file)
-                
+
             except Exception as e:
                 self.logger.error(f"Failed to process {nav_file.name}: {e}")
-    
+
     def run(self):
         """Start monitoring loop."""
         self.logger.info(f"Starting monitor: {self.watch_dir}")
         self.logger.info(f"Output directory: {self.output_dir}")
         self.logger.info(f"Check interval: {self.check_interval}s")
-        
+
         self.output_dir.mkdir(exist_ok=True)
-        
+
         try:
             while True:
                 self.process_new_files()
                 time.sleep(self.check_interval)
-                
+
         except KeyboardInterrupt:
             self.logger.info("Monitor stopped by user")
 

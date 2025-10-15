@@ -35,6 +35,7 @@ npm run docs:dev
 ```
 
 The documentation is available in multiple languages:
+
 - **English**: http://localhost:5173/ (default)
 - **简体中文**: http://localhost:5173/zh/
 
@@ -79,19 +80,21 @@ docs/
 A comprehensive tool for working with PFPX navdata files:
 
 **Features:**
+
 - Decode `.nav` files to readable text
-- Encode text files back to `.nav` format  
+- Encode text files back to `.nav` format
 - Auto-processing mode for batch operations
 - Progress tracking for large files
 - Configurable XOR keys and parameters
 - Error handling and validation
 
 **Usage:**
+
 ```bash
 # Decode a file
 python tools/nav_decoder.py decode input.nav output.txt
 
-# Encode a file  
+# Encode a file
 python tools/nav_decoder.py encode input.txt output.nav
 
 # Auto-process with standard naming
@@ -104,7 +107,7 @@ PFPX navdata files contain:
 
 1. **Header** (plaintext) - Database metadata and validity dates
 2. **Runway Data** (encoded) - Airport runway specifications
-3. **Waypoint Data** (encoded) - Navigation points, airports, VOR/NDB facilities  
+3. **Waypoint Data** (encoded) - Navigation points, airports, VOR/NDB facilities
 4. **Airway Data** (encoded) - Route segments and connections
 5. **SID Data** (encoded) - Standard departure procedures
 6. **STAR Data** (encoded) - Standard arrival procedures
@@ -114,6 +117,7 @@ All sections except the header use XOR encryption with key `0x85`.
 ### Data Sources
 
 Navigation data typically comes from:
+
 - **Navigraph** - Primary commercial provider
 - **Aerosoft** - Alternative data source
 - Follows AIRAC 28-day update cycles
@@ -121,10 +125,12 @@ Navigation data typically comes from:
 ### Development
 
 #### Prerequisites
+
 - Node.js 16+ (for documentation)
 - Python 3.6+ (for tools)
 
 #### Setup
+
 ```bash
 # Clone repository
 git clone https://github.com/6639835/pfpx
@@ -138,6 +144,7 @@ chmod +x tools/nav_decoder.py
 ```
 
 #### Build Documentation
+
 ```bash
 # Development server
 npm run docs:dev
@@ -205,6 +212,7 @@ npm run docs:dev
 ```
 
 文档提供多种语言版本：
+
 - **English**: http://localhost:5173/ (默认)
 - **简体中文**: http://localhost:5173/zh/
 
@@ -249,6 +257,7 @@ docs/
 处理 PFPX 导航数据文件的综合工具：
 
 **功能：**
+
 - 将 `.nav` 文件解码为可读文本
 - 将文本文件编码回 `.nav` 格式
 - 批量操作的自动处理模式
@@ -257,6 +266,7 @@ docs/
 - 错误处理和验证
 
 **用法：**
+
 ```bash
 # 解码文件
 python tools/nav_decoder.py decode input.nav output.txt
@@ -284,6 +294,7 @@ PFPX 导航数据文件包含：
 ### 数据源
 
 导航数据通常来自：
+
 - **Navigraph** - 主要商业提供商
 - **Aerosoft** - 替代数据源
 - 遵循 AIRAC 28 天更新周期
@@ -291,10 +302,12 @@ PFPX 导航数据文件包含：
 ### 开发
 
 #### 先决条件
+
 - Node.js 16+（用于文档）
 - Python 3.6+（用于工具）
 
 #### 设置
+
 ```bash
 # 克隆仓库
 git clone https://github.com/6639835/pfpx
@@ -308,6 +321,7 @@ chmod +x tools/nav_decoder.py
 ```
 
 #### 构建文档
+
 ```bash
 # 开发服务器
 npm run docs:dev

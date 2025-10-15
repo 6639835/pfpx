@@ -5,10 +5,12 @@ A comprehensive Python tool for encoding and decoding PFPX navdata files with ad
 ## Installation
 
 ### Requirements
+
 - **Python 3.6+**
 - No additional dependencies required (uses only standard library)
 
 ### Setup
+
 1. Download the decoder from the `tools/` directory
 2. Make it executable (Unix/Linux):
    ```bash
@@ -34,14 +36,15 @@ python nav_decoder.py auto
 
 The auto mode looks for these files in the current directory:
 
-| Input File | Output File | Operation |
-|------------|-------------|-----------|
-| `wait2decode.nav` | `already_decode.txt` | Decode |
-| `wait2encode.txt` | `already_encode.nav` | Encode |
+| Input File        | Output File          | Operation |
+| ----------------- | -------------------- | --------- |
+| `wait2decode.nav` | `already_decode.txt` | Decode    |
+| `wait2encode.txt` | `already_encode.nav` | Encode    |
 
 ## Advanced Options
 
 ### Custom XOR Key
+
 ```bash
 # Use a different XOR key (default is 0x85)
 python nav_decoder.py -k 0xFF decode input.nav output.txt
@@ -51,18 +54,21 @@ python nav_decoder.py --xor-key 0x90 decode input.nav output.txt
 ```
 
 ### Working Directory
+
 ```bash
 # Process files in a different directory
 python nav_decoder.py -d /path/to/files auto
 ```
 
 ### Verbose Output
+
 ```bash
 # Enable detailed logging
 python nav_decoder.py -v decode input.nav output.txt
 ```
 
 ### Progress Steps
+
 ```bash
 # Control progress reporting frequency
 python nav_decoder.py --steps 50 decode large_file.nav output.txt
@@ -120,17 +126,18 @@ except Exception as e:
 
 The `CodecConfig` class provides these settings:
 
-| Parameter | Default | Description |
-|-----------|---------|-------------|
-| `xor_key` | `0x85` | XOR key for encoding/decoding |
-| `header_threshold` | `128` | Byte threshold for header detection |
-| `content_line_threshold` | `30` | Line length threshold for content detection |
-| `progress_steps` | `20` | Number of progress updates |
-| `encoding` | `utf-8` | Text file encoding |
+| Parameter                | Default | Description                                 |
+| ------------------------ | ------- | ------------------------------------------- |
+| `xor_key`                | `0x85`  | XOR key for encoding/decoding               |
+| `header_threshold`       | `128`   | Byte threshold for header detection         |
+| `content_line_threshold` | `30`    | Line length threshold for content detection |
+| `progress_steps`         | `20`    | Number of progress updates                  |
+| `encoding`               | `utf-8` | Text file encoding                          |
 
 ## Performance Features
 
 ### Progress Tracking
+
 ```
 2025-01-15 10:30:15 - INFO - Starting decode operation: navdata.nav -> output.txt
 2025-01-15 10:30:20 - INFO - Progress: 5%
@@ -140,11 +147,13 @@ The `CodecConfig` class provides these settings:
 ```
 
 ### Memory Optimization
+
 - **Streaming Processing**: Handles large files without loading everything into memory
 - **Chunk Processing**: Processes data in manageable chunks
 - **Progress Checkpoints**: Regular progress updates for long operations
 
 ### Error Recovery
+
 - **File Validation**: Checks input files before processing
 - **Graceful Failures**: Detailed error messages for troubleshooting
 - **Interrupt Handling**: Clean shutdown on Ctrl+C
@@ -202,7 +211,7 @@ def analyze_navdata(nav_file):
     codec = NavCodec()
     decoded_file = "temp_decoded.txt"
     codec.decode_file(nav_file, decoded_file)
-    
+
     # Parse runway data
     runways = []
     with open(decoded_file, 'r') as f:
@@ -211,7 +220,7 @@ def analyze_navdata(nav_file):
                 # Parse runway record
                 runway_data = parse_runway(line)
                 runways.append(runway_data)
-    
+
     # Create DataFrame for analysis
     df = pd.DataFrame(runways)
     return df
@@ -232,13 +241,13 @@ codec = NavCodec()
 def decode_navdata():
     if 'file' not in request.files:
         return 'No file provided', 400
-    
+
     file = request.files['file']
-    
+
     # Create temporary files
     with tempfile.NamedTemporaryFile(suffix='.nav', delete=False) as input_temp:
         file.save(input_temp.name)
-        
+
         with tempfile.NamedTemporaryFile(suffix='.txt', delete=False) as output_temp:
             try:
                 codec.decode_file(input_temp.name, output_temp.name)
@@ -252,12 +261,12 @@ def decode_navdata():
 
 ### Common Issues
 
-| Issue | Cause | Solution |
-|-------|-------|----------|
-| "Input file not found" | Wrong file path | Check file path and permissions |
-| "Input file is empty" | Corrupted file | Verify file integrity |
-| "Decode failed" | Wrong XOR key | Try different XOR key values |
-| Memory errors | Very large files | Use streaming mode or chunk processing |
+| Issue                  | Cause            | Solution                               |
+| ---------------------- | ---------------- | -------------------------------------- |
+| "Input file not found" | Wrong file path  | Check file path and permissions        |
+| "Input file is empty"  | Corrupted file   | Verify file integrity                  |
+| "Decode failed"        | Wrong XOR key    | Try different XOR key values           |
+| Memory errors          | Very large files | Use streaming mode or chunk processing |
 
 ### Debug Mode
 

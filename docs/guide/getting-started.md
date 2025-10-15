@@ -18,6 +18,7 @@ PFPX navdata files contain encoded navigation data that needs to be decoded befo
 ### File Location
 
 Navdata files are typically found in your PFPX installation directory:
+
 ```
 PFPX Installation Folder/
 ├── Data/
@@ -58,11 +59,13 @@ The first few lines are readable, but the navigation data below is encoded and a
 ## Manual vs Automated Decoding
 
 ### Manual Method
+
 - Use Notepad++ with Converter plugin
 - Good for learning and small files
 - Time-consuming for large datasets
 
 ### Automated Method
+
 - Use our Python decoder tools
 - Fast and reliable
 - Better for batch processing and integration
