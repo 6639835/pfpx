@@ -63,7 +63,16 @@ class NavCodec:
         return logger
     
     def _separate_header_content(self, data: bytes) -> Tuple[bytes, bytes]:
-        """Separate header (ASCII) from binary content."""
+        """Separate header (ASCII) from encoded binary content.
+        
+        The header consists of all leading bytes < 128 (ASCII range).
+        Once we encounter a byte >= 128, that's where encoded content begins.
+        
+        This works because:
+        - Header is plain ASCII text (all bytes < 128)
+        - Encoded content has XORed bytes (mostly >= 128)
+        - Newlines in content (10, 13) are preserved but appear after the first >= 128 byte
+        """
         header_bytes = bytearray()
         content_start = 0
         
@@ -77,7 +86,23 @@ class NavCodec:
         return bytes(header_bytes), data[content_start:]
     
     def _separate_text_header_content(self, lines: list) -> Tuple[str, str]:
-        """Separate header from content in text file based on line length."""
+        """Separate header from content in text file based on line length.
+        
+        WARNING: This method uses line length as a heuristic (> 30 chars = content).
+        This is fragile and may fail if:
+        - Header contains long lines (> 30 chars)
+        - Content contains short lines (<= 30 chars)
+        
+        For PFPX navdata files, the header is typically 6-7 short lines:
+        - PFPX NAVDATA
+        - Cycle code (e.g., NG2509)
+        - Start date (YYYY/MM/DD)
+        - End date (YYYY/MM/DD)
+        - Provider (e.g., NAVIGRAPH)
+        - Empty line
+        
+        Consider using a fixed line count or pattern matching for more reliability.
+        """
         header = ''
         content = ''
         content_started = False
@@ -165,8 +190,7 @@ class NavCodec:
             with open(output_path, 'wb') as file:
                 # Write header as-is (encode as bytes)
                 header_bytes = header.encode(self.config.encoding)
-                for byte_val in header_bytes:
-                    file.write(bytes([byte_val]))
+                file.write(header_bytes)
                 
                 # Encode content with progress tracking
                 content_bytes = content.encode(self.config.encoding)
@@ -178,8 +202,13 @@ class NavCodec:
                     if percentage:
                         self.logger.info(f"Progress: {percentage}%")
                     
-                    # Encode byte
-                    if byte_val not in {10, 13}:  # Preserve newlines
+                    # Encode byte - XOR all bytes except control chars < 128
+                    # This ensures: ASCII chars become >= 128, but newlines/control stay < 128
+                    if byte_val >= self.config.header_threshold:
+                        # Non-ASCII characters should be XORed
+                        byte_val ^= self.config.xor_key
+                    elif byte_val not in {10, 13}:  # Preserve newlines only
+                        # ASCII characters (except newlines) get XORed
                         byte_val ^= self.config.xor_key
                     file.write(bytes([byte_val]))
             
