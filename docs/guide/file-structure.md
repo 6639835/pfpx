@@ -111,13 +111,13 @@ Each encoded section follows a line-by-line format where:
 
 Each record type can be identified by its prefix:
 
-| Prefix | Section   | Description                                              |
-| ------ | --------- | -------------------------------------------------------- |
-| `RWY`  | Runway    | Runway information                                       |
-| `WPT`  | Waypoint  | Waypoints (including airports and navigation facilities) |
-| `AWY`  | Airway    | Route segments                                           |
-| `SID`  | Departure | Standard departures                                      |
-| `STR`  | Arrival   | Standard arrivals                                        |
+| Prefix   | Section     | Description                                                |
+| -------- | ----------- | ---------------------------------------------------------- |
+| `RWY`    | Runway      | Runway information                                         |
+| `WPT`    | Waypoint    | Waypoints (including airports and navigation facilities)   |
+| `AWY`    | Airway      | Route segments                                             |
+| `SID`    | Departure   | Standard departures                                        |
+| `STR`    | Arrival     | Standard arrivals                                          |
 
 ## File Size Considerations
 

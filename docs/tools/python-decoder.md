@@ -36,10 +36,10 @@ python nav_decoder.py auto
 
 The auto mode looks for these files in the current directory:
 
-| Input File        | Output File          | Operation |
-| ----------------- | -------------------- | --------- |
-| `wait2decode.nav` | `already_decode.txt` | Decode    |
-| `wait2encode.txt` | `already_encode.nav` | Encode    |
+| Input File          | Output File            | Operation |
+| ------------------- | ---------------------- | --------- |
+| `wait2decode.nav`   | `already_decode.txt`   | Decode    |
+| `wait2encode.txt`   | `already_encode.nav`   | Encode    |
 
 ## Advanced Options
 
@@ -126,13 +126,13 @@ except Exception as e:
 
 The `CodecConfig` class provides these settings:
 
-| Parameter                | Default | Description                                 |
-| ------------------------ | ------- | ------------------------------------------- |
-| `xor_key`                | `0x85`  | XOR key for encoding/decoding               |
-| `header_threshold`       | `128`   | Byte threshold for header detection         |
-| `content_line_threshold` | `30`    | Line length threshold for content detection |
-| `progress_steps`         | `20`    | Number of progress updates                  |
-| `encoding`               | `utf-8` | Text file encoding                          |
+| Parameter                  | Default   | Description                                   |
+| -------------------------- | --------- | --------------------------------------------- |
+| `xor_key`                  | `0x85`    | XOR key for encoding/decoding                 |
+| `header_threshold`         | `128`     | Byte threshold for header detection           |
+| `content_line_threshold`   | `30`      | Line length threshold for content detection   |
+| `progress_steps`           | `20`      | Number of progress updates                    |
+| `encoding`                 | `utf-8`   | Text file encoding                            |
 
 ## Performance Features
 
@@ -261,12 +261,12 @@ def decode_navdata():
 
 ### Common Issues
 
-| Issue                  | Cause            | Solution                               |
-| ---------------------- | ---------------- | -------------------------------------- |
-| "Input file not found" | Wrong file path  | Check file path and permissions        |
-| "Input file is empty"  | Corrupted file   | Verify file integrity                  |
-| "Decode failed"        | Wrong XOR key    | Try different XOR key values           |
-| Memory errors          | Very large files | Use streaming mode or chunk processing |
+| Issue                    | Cause              | Solution                                 |
+| ------------------------ | ------------------ | ---------------------------------------- |
+| "Input file not found"   | Wrong file path    | Check file path and permissions          |
+| "Input file is empty"    | Corrupted file     | Verify file integrity                    |
+| "Decode failed"          | Wrong XOR key      | Try different XOR key values             |
+| Memory errors            | Very large files   | Use streaming mode or chunk processing   |
 
 ### Debug Mode
 

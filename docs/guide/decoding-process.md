@@ -140,12 +140,12 @@ After decoding, verify your results:
 
 ### Common Issues
 
-| Problem                  | Cause                     | Solution                 |
-| ------------------------ | ------------------------- | ------------------------ |
-| Converter plugin missing | Notepad++ installation    | Install Converter plugin |
-| "Error" message          | Processing too many lines | Reduce selection size    |
-| Garbled output           | Wrong encoding            | Use ANSI encoding        |
-| Missing characters       | Incomplete selection      | Include full line ranges |
+| Problem                    | Cause                       | Solution                   |
+| -------------------------- | --------------------------- | -------------------------- |
+| Converter plugin missing   | Notepad++ installation      | Install Converter plugin   |
+| "Error" message            | Processing too many lines   | Reduce selection size      |
+| Garbled output             | Wrong encoding              | Use ANSI encoding          |
+| Missing characters         | Incomplete selection        | Include full line ranges   |
 
 ### Performance Tips
 

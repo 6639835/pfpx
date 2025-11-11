@@ -56,18 +56,18 @@ UNLTD  → No upper limit
 
 ## Route Types
 
-| Code | Description   | Usage                |
-| ---- | ------------- | -------------------- |
-| 1    | High Altitude | FL180 and above      |
-| 2    | Low Altitude  | Below FL180          |
-| 3    | High/Low      | Both altitude ranges |
+| Code   | Description     | Usage                  |
+| ------ | --------------- | ---------------------- |
+| 1      | High Altitude   | FL180 and above        |
+| 2      | Low Altitude    | Below FL180            |
+| 3      | High/Low        | Both altitude ranges   |
 
 ## Direction Codes
 
-| Code | Description    | Restrictions    |
-| ---- | -------------- | --------------- |
-| 0    | Unidirectional | One-way routing |
-| 1    | Bidirectional  | Two-way routing |
+| Code   | Description      | Restrictions      |
+| ------ | ---------------- | ----------------- |
+| 0      | Unidirectional   | One-way routing   |
+| 1      | Bidirectional    | Two-way routing   |
 
 ## Data Integration
 

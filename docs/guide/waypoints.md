@@ -30,31 +30,32 @@ WPT ICAO IATA0ICAOAREA1CAREAGIONNAMEEEEE        DDDDDD     ±LLLLLLLLL±LLLLLLLL
 ### Example
 
 ```
-WPT ZBAA PEK0ZBAAZBP 1CZBCAPITAL                       016256     +40073333+116598333+0011612467ZBPE    9850
+WPT EDSB FKB0EDSBEDP 1CEDKARLSRUHE/BADEN-BADEN         003214     +48779353+008080500+0040909843EDGGEDUU5000
 ```
 
 ### Field Breakdown
 
-| Field        | Meaning                      | Notes / Examples                                                             |
-| ------------ | ---------------------------- | ---------------------------------------------------------------------------- |
-| `WPT`        | Waypoint type identifier     | Fixed value indicating this record is a waypoint/airport/navigation facility |
-| `ZBAA`       | ICAO code                    |                                                                              |
-| `PEK`        | IATA code                    |                                                                              |
-| `0`          | Type code                    | 0 = Airport                                                                  |
-| `ZBAA`       | ICAO code                    | Same as ICAO above                                                           |
-| `ZB`         | Region code                  |                                                                              |
-| `P`          | Section code                 | Airport (ref ARINC424-18 5.4)                                                |
-| `1`          | Flag                         | Fixed value indicating this record is an airport                             |
-| `C`          | Airport category             | C = Civil, M = Military, P = Private                                         |
-| `ZB`         | Region code                  |                                                                              |
-| `CAPITAL`    | Name                         |                                                                              |
-| `016256`     | Database ID                  | Unique identifier                                                            |
-| `+40073333`  | Latitude                     | WGS-84, decimal degrees × 1e6, + = North, - = South → 40.073333°N            |
-| `+116598333` | Longitude                    | WGS-84, decimal degrees × 1e6, + = East, - = West → 116.598333°E             |
-| `+00116`     | Elevation (feet)             | + = Above MSL, - = Below MSL                                                 |
-| `12467`      | Longest runway length (feet) | e.g., 12,467 ft                                                              |
-| `ZBPE`       | Airport FIR code             |                                                                              |
-| `9850`       | Transition altitude (ft)     |                                                                              |
+| Field                  | Meaning                      | Notes / Examples                                                             |
+| ---------------------- | ---------------------------- | ---------------------------------------------------------------------------- |
+| `WPT`                  | Waypoint type identifier     | Fixed value indicating this record is a waypoint/airport/navigation facility |
+| `EDSB`                 | ICAO code                    |                                                                              |
+| `FKB`                  | IATA code                    |                                                                              |
+| `0`                    | Type code                    | 0 = Airport                                                                  |
+| `EDSB`                 | ICAO code                    | Same as ICAO above                                                           |
+| `ED`                   | Region code                  |                                                                              |
+| `P`                    | Section code                 | Airport (ref ARINC424-18 5.4)                                                |
+| `1`                    | Flag                         | 0 = Enroute, 1 = Terminal, airports are always 1                             |
+| `C`                    | Airport category             | C = Civil, M = Military, P = Private                                         |
+| `ED`                   | Region code                  |                                                                              |
+| `KARLSRUHE/BADEN-BADEN` | Name                         |                                                                              |
+| `003214`               | Database ID                  | Unique identifier                                                            |
+| `+48779353`            | Latitude                     | WGS-84, decimal degrees × 1e6, + = North, - = South → 40.073333°N            |
+| `+008080500`           | Longitude                    | WGS-84, decimal degrees × 1e6, + = East, - = West → 116.598333°E             |
+| `+00409`               | Elevation (feet)             | + = Above MSL, - = Below MSL                                                 |
+| `09843`                | Longest runway length (feet) | e.g., 12,467 ft                                                              |
+| `EDGG`                 | Lower FIR                    |                                                                              |
+| `EDUU`                 | Upper FIR                    |                                                                              |
+| `9850`                 | Transition altitude (ft)     |                                                                              |
 
 ## Route Waypoints (Type 6)
 
@@ -68,22 +69,22 @@ WPT AVBOX   6AVBOXZBE0 ZBAVBOX                         097808     +38647778+1163
 
 ### Field Breakdown
 
-| Field         | Meaning                   | Notes / Examples                                                             |
-| ------------- | ------------------------- | ---------------------------------------------------------------------------- |
-| `WPT`         | Waypoint type identifier  | Fixed value indicating this record is a waypoint/airport/navigation facility |
-| `AVBOX`       | Waypoint identifier       |                                                                              |
-| `6`           | Type code                 | 6 = Waypoint                                                                 |
-| `AVBOX`       | Waypoint identifier       |                                                                              |
-| `ZB`          | Region code               |                                                                              |
-| `E`           | Section code              | E = Enroute, P = Airport (ref ARINC424-18 5.4)                               |
-| `0`           | Terminal area flag        | 0 = Not terminal area waypoint, 1 = Terminal area waypoint                   |
-| `ZB`          | Region code               |                                                                              |
-| `AVBOX`       | Waypoint name             | If named by VOR bearing and distance, would be `ZUH345015`                   |
-| `097808`      | Database ID               |                                                                              |
-| `+38647778`   | Latitude                  |                                                                              |
-| `+116378056`  | Longitude                 |                                                                              |
-| `+0000000000` | Unused field              | Waypoint does not need this field                                            |
-| `ZBPE`        | Flight Information Region |                                                                              |
+| Field         | Meaning                      | Notes / Examples                                                             |
+| ------------- | ---------------------------- | ---------------------------------------------------------------------------- |
+| `WPT`         | Waypoint type identifier     | Fixed value indicating this record is a waypoint/airport/navigation facility |
+| `AVBOX`       | Waypoint identifier          |                                                                              |
+| `6`           | Type code                    | 6 = Waypoint                                                                 |
+| `AVBOX`       | Waypoint identifier          |                                                                              |
+| `ZB`          | Region code                  |                                                                              |
+| `E`           | Section code                 | E = Enroute, P = Airport (ref ARINC424-18 5.4)                               |
+| `0`           | Terminal area flag           | 0 = Not terminal area waypoint, 1 = Terminal area waypoint                   |
+| `ZB`          | Region code                  |                                                                              |
+| `AVBOX`       | Waypoint name                | If named by VOR bearing and distance, would be `ZUH345015`                   |
+| `097808`      | Database ID                  |                                                                              |
+| `+38647778`   | Latitude                     |                                                                              |
+| `+116378056`  | Longitude                    |                                                                              |
+| `+0000000000` | Unused field                 | Waypoint does not need this field                                            |
+| `ZBPE`        | Flight Information Region    |                                                                              |
 
 ## VOR Stations (Type 4)
 
@@ -97,24 +98,24 @@ WPT PEK     4PEKZBD  0 ZBGUANZHUANG                    27126111470+40048333+1167
 
 ### Field Breakdown
 
-| Field        | Meaning                   | Notes / Examples                                                             |
-| ------------ | ------------------------- | ---------------------------------------------------------------------------- |
-| `WPT`        | Waypoint type identifier  | Fixed value indicating this record is a waypoint/airport/navigation facility |
-| `PEK`        | VOR identifier            |                                                                              |
-| `4`          | Type code                 | 4 = VOR/DME                                                                  |
-| `PEK`        | VOR identifier            |                                                                              |
-| `ZB`         | Region code               |                                                                              |
-| `D`          | Section code              | D = Navigation facility (ref ARINC424-18 5.4)                                |
-| `0`          | Terminal area flag        | 0 = Not terminal area waypoint, 1 = Terminal area waypoint                   |
-| `ZB`         | Region code               |                                                                              |
-| `GUANZHUANG` | Name                      |                                                                              |
-| `271261`     | Database ID               |                                                                              |
-| `11470`      | Frequency                 | 11470 = 114.70 MHz                                                           |
-| `+40048333`  | Latitude                  |                                                                              |
-| `+116735000` | Longitude                 |                                                                              |
-| `+00203`     | Elevation                 | Elevation (feet), + = Above MSL, - = Below MSL                               |
-| `00000`      | Unused field              | VOR does not need this field                                                 |
-| `ZBPE`       | Flight Information Region |                                                                              |
+| Field        | Meaning                      | Notes / Examples                                                             |
+| ------------ | ---------------------------- | ---------------------------------------------------------------------------- |
+| `WPT`        | Waypoint type identifier     | Fixed value indicating this record is a waypoint/airport/navigation facility |
+| `PEK`        | VOR identifier               |                                                                              |
+| `4`          | Type code                    | 4 = VOR/DME                                                                  |
+| `PEK`        | VOR identifier               |                                                                              |
+| `ZB`         | Region code                  |                                                                              |
+| `D`          | Section code                 | D = Navigation facility (ref ARINC424-18 5.4)                                |
+| `0`          | Terminal area flag           | 0 = Not terminal area waypoint, 1 = Terminal area waypoint                   |
+| `ZB`         | Region code                  |                                                                              |
+| `GUANZHUANG` | Name                         |                                                                              |
+| `271261`     | Database ID                  |                                                                              |
+| `11470`      | Frequency                    | 11470 = 114.70 MHz                                                           |
+| `+40048333`  | Latitude                     |                                                                              |
+| `+116735000` | Longitude                    |                                                                              |
+| `+00203`     | Elevation                    | Elevation (feet), + = Above MSL, - = Below MSL                               |
+| `00000`      | Unused field                 | VOR does not need this field                                                 |
+| `ZBPE`       | Flight Information Region    |                                                                              |
 
 ## NDB Stations (Type 5)
 
@@ -128,23 +129,23 @@ WPT CU      5CUZBD   0 ZBSHAHE                         27392005550+40121667+1163
 
 ### Field Breakdown
 
-| Field        | Meaning                   | Notes / Examples                                                             |
-| ------------ | ------------------------- | ---------------------------------------------------------------------------- |
-| `WPT`        | Waypoint type identifier  | Fixed value indicating this record is a waypoint/airport/navigation facility |
-| `CU`         | NDB identifier            |                                                                              |
-| `5`          | Type code                 | 5 = NDB                                                                      |
-| `CU`         | NDB identifier            |                                                                              |
-| `ZB`         | Region code               |                                                                              |
-| `D`          | Section code              | D = Navigation facility (ref ARINC424-18 5.4)                                |
-| `0`          | Terminal area flag        | 0 = Not terminal area waypoint, 1 = Terminal area waypoint                   |
-| `ZB`         | Region code               |                                                                              |
-| `SHAHE`      | Name                      |                                                                              |
-| `273920`     | Database ID               |                                                                              |
-| `05550`      | Frequency                 | 05550 = 555.0 kHz                                                            |
-| `+40121667`  | Latitude                  |                                                                              |
-| `+116371667` | Longitude                 |                                                                              |
-| `0000000000` | Unused field              | NDB does not use this field                                                  |
-| `ZBPE`       | Flight Information Region |                                                                              |
+| Field        | Meaning                      | Notes / Examples                                                             |
+| ------------ | ---------------------------- | ---------------------------------------------------------------------------- |
+| `WPT`        | Waypoint type identifier     | Fixed value indicating this record is a waypoint/airport/navigation facility |
+| `CU`         | NDB identifier               |                                                                              |
+| `5`          | Type code                    | 5 = NDB                                                                      |
+| `CU`         | NDB identifier               |                                                                              |
+| `ZB`         | Region code                  |                                                                              |
+| `D`          | Section code                 | D = Navigation facility (ref ARINC424-18 5.4)                                |
+| `0`          | Terminal area flag           | 0 = Not terminal area waypoint, 1 = Terminal area waypoint                   |
+| `ZB`         | Region code                  |                                                                              |
+| `SHAHE`      | Name                         |                                                                              |
+| `273920`     | Database ID                  |                                                                              |
+| `05550`      | Frequency                    | 05550 = 555.0 kHz                                                            |
+| `+40121667`  | Latitude                     |                                                                              |
+| `+116371667` | Longitude                    |                                                                              |
+| `0000000000` | Unused field                 | NDB does not use this field                                                  |
+| `ZBPE`       | Flight Information Region    |                                                                              |
 
 ## Coordinate Conversion
 

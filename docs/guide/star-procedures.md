@@ -19,19 +19,19 @@ STR YWLM30   319981258062DOMBLIVTA1R      -33143681+1515064721
 
 ## Field Breakdown
 
-| Field        | Meaning                      | Notes / Examples                                  |
-| ------------ | ---------------------------- | ------------------------------------------------- |
-| `STR`        | Arrival procedure identifier | Fixed value indicating this record is a STAR      |
-| `YWLM`       | ICAO code                    |                                                   |
-| `ALL`        | Runway designation           | ALL = All runways; xxB = xxL / xxC / xxR          |
-| `319972`     | STAR procedure database ID   |                                                   |
-| `094283`     | Waypoint ID (current line)   |                                                   |
-| `EKIPU`      | Waypoint name (current line) |                                                   |
-| `IVTA1R`     | Procedure identifier         |                                                   |
-| `EKIPU`      | Procedure transition point   | If transition point exists, its name is filled in |
-| `-33207250`  | Latitude (current waypoint)  |                                                   |
-| `+151740667` | Longitude (current waypoint) |                                                   |
-| `1`          | RNAV procedure flag          | 0 = No, 1 = Yes                                   |
+| Field          | Meaning                        | Notes / Examples                                    |
+| -------------- | ------------------------------ | --------------------------------------------------- |
+| `STR`          | Arrival procedure identifier   | Fixed value indicating this record is a STAR        |
+| `YWLM`         | ICAO code                      |                                                     |
+| `ALL`          | Runway designation             | ALL = All runways; xxB = xxL / xxC / xxR            |
+| `319972`       | STAR procedure database ID     |                                                     |
+| `094283`       | Waypoint ID (current line)     |                                                     |
+| `EKIPU`        | Waypoint name (current line)   |                                                     |
+| `IVTA1R`       | Procedure identifier           |                                                     |
+| `EKIPU`        | Procedure transition point     | If transition point exists, its name is filled in   |
+| `-33207250`    | Latitude (current waypoint)    |                                                     |
+| `+151740667`   | Longitude (current waypoint)   |                                                     |
+| `1`            | RNAV procedure flag            | 0 = No, 1 = Yes                                     |
 
 ## Runway Designations
 

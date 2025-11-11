@@ -25,19 +25,19 @@ SID RJNAALL  102001075867WAKITTALMI4WAKIT +35032736+1349255530
 
 ## Field Breakdown
 
-| Field        | Meaning                        | Notes / Examples                                  |
-| ------------ | ------------------------------ | ------------------------------------------------- |
-| `SID`        | Departure procedure identifier | Fixed value indicating this record is a SID       |
-| `RJNA`       | ICAO code                      |                                                   |
-| `ALL`        | Runway designation             | ALL = All runways; xxB = xxL / xxC / xxR          |
-| `101992`     | SID database ID                |                                                   |
-| `213869`     | Waypoint ID (current line)     |                                                   |
-| `TALMI`      | Waypoint name (current line)   |                                                   |
-| `TALMI4`     | Procedure identifier           |                                                   |
-| `KAMMY`      | Procedure transition point     | If transition point exists, its name is filled in |
-| `+40073450`  | Latitude (current waypoint)    |                                                   |
-| `+116574192` | Longitude (current waypoint)   |                                                   |
-| `0`          | RNAV procedure flag            | 0 = No, 1 = Yes                                   |
+| Field          | Meaning                          | Notes / Examples                                    |
+| -------------- | -------------------------------- | --------------------------------------------------- |
+| `SID`          | Departure procedure identifier   | Fixed value indicating this record is a SID         |
+| `RJNA`         | ICAO code                        |                                                     |
+| `ALL`          | Runway designation               | ALL = All runways; xxB = xxL / xxC / xxR            |
+| `101992`       | SID database ID                  |                                                     |
+| `213869`       | Waypoint ID (current line)       |                                                     |
+| `TALMI`        | Waypoint name (current line)     |                                                     |
+| `TALMI4`       | Procedure identifier             |                                                     |
+| `KAMMY`        | Procedure transition point       | If transition point exists, its name is filled in   |
+| `+40073450`    | Latitude (current waypoint)      |                                                     |
+| `+116574192`   | Longitude (current waypoint)     |                                                     |
+| `0`            | RNAV procedure flag              | 0 = No, 1 = Yes                                     |
 
 ## Runway Designations
 

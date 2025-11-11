@@ -194,16 +194,16 @@ ZA 270 089 M 030000200041000 410000400045000
 
 ## Field Breakdown
 
-| Field             | Meaning                          | Notes / Examples                                                    |
-| ----------------- | -------------------------------- | ------------------------------------------------------------------- |
-| `FA`              | Cruise identifier                | Fixed value indicating this record contains cruise performance data |
-| `360`             | Heading                          | ICAO aircraft type designator                                       |
-| `179`             | Heading                          | Standard flight level (FL350 = 35,000 feet)                         |
-| `T`               | Magnetic indicator               | T=True, M=Magnetic                                                  |
-| `M0090M0060M0810` | Cruise altitude layer identifier | From 900M to 8100M with RVSM interval of 600M                       |
-| `M0810M0080M0890` | Cruise altitude layer identifier | From 8100M to 8900M with RVSM interval of 800M                      |
-| `M0890M0060M1250` | Cruise altitude layer identifier | From 8900M to 12500M with RVSM interval of 600M                     |
-| `M1250M0120M1490` | Cruise altitude layer identifier | From 12500M to 14900M with RVSM interval of 1200M                   |
+| Field               | Meaning                            | Notes / Examples                                                      |
+| ------------------- | ---------------------------------- | --------------------------------------------------------------------- |
+| `FA`                | Cruise identifier                  | Fixed value indicating this record contains cruise performance data   |
+| `360`               | Heading                            | ICAO aircraft type designator                                         |
+| `179`               | Heading                            | Standard flight level (FL350 = 35,000 feet)                           |
+| `T`                 | Magnetic indicator                 | T=True, M=Magnetic                                                    |
+| `M0090M0060M0810`   | Cruise altitude layer identifier   | From 900M to 8100M with RVSM interval of 600M                         |
+| `M0810M0080M0890`   | Cruise altitude layer identifier   | From 8100M to 8900M with RVSM interval of 800M                        |
+| `M0890M0060M1250`   | Cruise altitude layer identifier   | From 8900M to 12500M with RVSM interval of 600M                       |
+| `M1250M0120M1490`   | Cruise altitude layer identifier   | From 12500M to 14900M with RVSM interval of 1200M                     |
 
 ## Notes
 
